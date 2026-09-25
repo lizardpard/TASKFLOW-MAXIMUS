@@ -59,7 +59,7 @@ function carregarTarefas() {
     }
   }
 
-  tasks = TAREFAS_INICIAIS;
+  tasks = [];
 }
 
 function render() {
