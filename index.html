@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="TaskFlow: organize suas tarefas escolares, acompanhe seu progresso e mantenha os estudos em dia.">
+  <meta name="theme-color" content="#1f4fd8">
+  <title>TaskFlow | Suas tarefas em dia</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <a class="skip-link" href="#topo">Pular para o conteúdo</a>
+
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="logo" href="#topo" aria-label="TaskFlow, início">
+        <svg class="logo__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <rect x="3" y="3" width="18" height="18" rx="4" fill="none" stroke="currentColor" stroke-width="2"/>
+          <path d="M7.5 12.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span class="logo__text">TaskFlow</span>
+      </a>
+
+      <nav class="site-nav" aria-label="Navegação principal">
+        <a class="site-nav__link" href="#nova-tarefa">Nova tarefa</a>
+        <a class="site-nav__link" href="#minhas-tarefas">Minhas tarefas</a>
+      </nav>
+
+      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Alternar entre tema claro e escuro">
+        <span class="theme-toggle__icon" aria-hidden="true">🌙</span>
+        <span class="theme-toggle__label">Tema escuro</span>
+      </button>
+    </div>
+  </header>
+
+  <main class="container" id="topo">
+
+    <section class="intro" aria-labelledby="intro-titulo">
+      <h1 class="intro__title" id="intro-titulo">Organize suas tarefas e mantenha seus estudos em dia.</h1>
+      <p class="intro__text">
+        Anote trabalhos, provas e exercícios em um só lugar e acompanhe o que ainda falta fazer.
+      </p>
+
+      <ol class="steps" aria-label="Como usar">
+        <li class="steps__item">Escreva a tarefa e clique em <strong>Adicionar</strong></li>
+        <li class="steps__item">Marque a caixinha quando terminar</li>
+        <li class="steps__item">Use <strong>Excluir</strong> para remover o que não precisa mais</li>
+      </ol>
+    </section>
+
+    <section class="panel new-task" id="nova-tarefa" aria-labelledby="nova-tarefa-titulo">
+      <h2 class="panel__title" id="nova-tarefa-titulo">Nova tarefa</h2>
+
+      <form class="task-form" id="task-form" novalidate>
+        <div class="task-form__group">
+          <label class="task-form__label" for="task-input">O que você precisa fazer?</label>
+          <div class="task-form__main">
+            <input class="field task-form__input" id="task-input" name="tarefa" type="text"
+                   placeholder="Ex.: Estudar para a prova de História" maxlength="120" autocomplete="off">
+            <button class="btn btn--primary" id="add-button" type="submit">Adicionar</button>
+          </div>
+        </div>
+
+        <p class="form-error" id="form-error" role="alert" hidden>Escreva o nome da tarefa antes de adicionar.</p>
+
+        <fieldset class="task-form__extras">
+          <legend class="task-form__legend">Detalhes (opcional)</legend>
+
+          <div class="task-form__group">
+            <label class="task-form__label" for="task-priority">Prioridade</label>
+            <select class="field" id="task-priority" name="prioridade">
+              <option value="alta">🔴 Alta</option>
+              <option value="media" selected>🟡 Média</option>
+              <option value="baixa">🟢 Baixa</option>
+            </select>
+          </div>
+
+          <div class="task-form__group">
+            <label class="task-form__label" for="task-date">Data de entrega</label>
+            <input class="field" id="task-date" name="entrega" type="date">
+          </div>
+        </fieldset>
+      </form>
+    </section>
+
+    <section class="panel tasks" id="minhas-tarefas" aria-labelledby="minhas-tarefas-titulo">
+      <div class="tasks__top">
+        <div class="tasks__summary">
+          <h2 class="panel__title" id="minhas-tarefas-titulo">Minhas tarefas</h2>
+          <p class="counter" id="task-counter" aria-live="polite">Carregando tarefas...</p>
+        </div>
+
+        <div class="filters-wrap">
+          <span class="filters__label" id="filters-label">Mostrar:</span>
+          <div class="filters" role="group" aria-labelledby="filters-label">
+            <button class="filter is-active" type="button" data-filter="todas" aria-pressed="true">Todas</button>
+            <button class="filter" type="button" data-filter="pendentes" aria-pressed="false">Pendentes</button>
+            <button class="filter" type="button" data-filter="concluidas" aria-pressed="false">Concluídas</button>
+          </div>
+        </div>
+      </div>
+
+      <ul class="task-list" id="task-list"></ul>
+
+      <p class="empty-state" id="empty-state" hidden>
+        Você ainda não tem tarefas. Escreva a primeira no campo "Nova tarefa".
+      </p>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>TaskFlow, projeto feito com HTML, CSS e JavaScript puros.</p>
+    </div>
+  </footer>
+
+  <script src="js/script.js" defer></script>
+</body>
+</html>
